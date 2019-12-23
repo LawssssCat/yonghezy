@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+<!-- 配置 springmvc 放行静态资源文件( html/css/js/图片等) 
+	匹配完后，再去访问当前项目中的静态资源文件
+	旧不会再匹配 Controller 方法，不会被拦截，
+	而是直接到指定路径下寻找响应的 静态资源文件
+	(静态资源文件就可以访问了)
+ <mvc:default-servlet-handler/>
+ -->
+
+<!-- 配置识别下面注解驱动
+		@Controller / @Service / @Component
+	<mvc:annotation-driven  />
+ -->
+	
+<!-- 配置需要扫描的包
+ -->
+ <context:component-scan base-package="com.edut.controller"></context:component-scan>
+ 
+ <!-- 配置内部资源视图解析器 -->
+ <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ 	<!-- 表示jsp页面资源的存放位置 
+ 		资源名	 home
+ 		prefix   /WEB-INF/pages/
+ 		suffix   .jsp     
+ 	-->
+ 	<property name="prefix" value="/WEB-INF/pages/"  ></property>
+ 	<property name="suffix" value=".jsp"></property>
+ </bean>
+
+</beans>
