@@ -10,43 +10,5 @@
  即，XxxMapper.xml是通过这个文件来间接读取的！	
  -->
 <configuration >
-	<!-- 提示来源： "http://mybatis.org/dtd/mybatis-3-config.dtd" 中文件提供  -->
-	
-	<!-- 0. 加载常量配置信息 -->
-	<properties resource="jdbc.properties"/>  
-	
-	<!-- 1. 配置开发环境 -->
-	<!-- 定义数据库信息，默认使用 develop 数据库构建环境 -->  
-	<environments default="develop">
-		<environment id="develop">
-			<!-- 配置事务管理器(JDBC / MANAGED)
-			type:
-				JDBC: jdbc进行事务管理(√) 
-				MANAGED: 自己管理
-			-->
-			<transactionManager type="JDBC"/>
-			<!--  配置数据源(连接池) DataSource 
-			type:
-				UNPOOLED 	==》 不使用连接池
-				POOLED		==》 使用连接池 （√）
-				JNDI	 	==》 (过时) 
-			-->
-			<dataSource type="POOLED" >
-				<property name="username" value="${jdbc.user}"/>
-				<property name="password" value="${jdbc.password}"/>
-				<property name="driver" value="${jdbc.driverClass}"/>
-				<property name="url" value="${jdbc.jdbcUrl}"/>
-			</dataSource>	
-		</environment>
-	</environments>
-	
-	
-	<!-- 2. 导入XxxMapper.xml文件 -->
-	<!-- 定义映射器 -->
-	<mappers>
-		 <!-- 
-		 使用这个方案，可以 单独 指定 Mapper的位置 
-		 -->  
-		<mapper resource="mybatis/mapper/DoorMapper.xml" />
-	</mappers>
+	<!-- 将配置移到 spring 的配置文件中  -->
 </configuration>
