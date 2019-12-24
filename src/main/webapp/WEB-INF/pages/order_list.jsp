@@ -31,7 +31,7 @@
 <body>
 	<h2>订单管理</h2>
 	<div id="add-order">
-		<a href="findAllDoorToOrder_add" target="rightFrame">新增订单</a>
+		<a href="toOrderAdd" target="rightFrame">新增订单</a>
 	</div>
 	<hr/>
 	<table border="1">
@@ -50,7 +50,7 @@
 		</tr>
 
 	<!-- 模版数据 -->
-	<tr>
+	<!-- <tr>
 			<td>1</td>
 			<td>永和大王(西直门店)</td>
 			<td>P001</td>
@@ -75,6 +75,42 @@
 				<a href="orderInfo?id=">修改</a>
 			</td>
 		</tr>
+		 -->
+		 <c:forEach items="${orderList }" var="order" varStatus="s">
+		 <tr>
+			<td>${s.count }</td>
+			<td>
+				<c:forEach items="${doorList }" var="door">
+					<c:if test="${door.id == order.doorId }">
+						${door.name }
+					</c:if>
+				</c:forEach>
+			</td>
+			<td>${order.orderNo }</td>
+			<td>${order.orderType }</td>
+			<td>${order.pnum }</td>
+			<td>${order.cashier }</td>
+			<td>
+				<fmt:formatDate value="${order.orderTime }" 
+				pattern="yyyy-MM-dd HH:mm:ss"/>
+				<%-- 
+				<fmt:formatDate value="${order.orderTime}"
+							pattern="yyyy-MM-dd HH:mm:ss" />
+				 --%>
+			</td>
+			<td>
+				<fmt:formatDate value="${order.payTime }" 
+				pattern="yyyy-MM-dd HH:mm:ss"/>
+			</td>
+			<td>${order.payType }</td>
+			<td>${order.price }</td>
+			<td>
+				<a href="orderDelete?id=${order.id }">删除</a>
+				&nbsp;|&nbsp;
+				<a href="toOrderUpdate?id=${order.id }">修改</a>
+			</td>
+		</tr>
+		 </c:forEach>
 </table>
 
 </body><!-- body-end  -->

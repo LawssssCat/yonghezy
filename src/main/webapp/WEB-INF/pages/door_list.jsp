@@ -19,6 +19,10 @@
 	#add-door{text-align:center;font-size:20px;}
 </style>
 </head>
+<script type="text/javascript">
+	
+</script>
+
 <body><!-- body-start  -->
 
 <h2>门店管理</h2>
@@ -36,7 +40,7 @@
 	</tr>
 
 	<!-- 模版数据 -->
-	<tr>
+<%--	<tr>
 		<td>1</td>
 		<td>永和大王(北三环西路店)</td>
 		<td>010-62112313</td>
@@ -47,10 +51,27 @@
 			<a href="doorInfo?id=">修改</a>
 		</td>
 	</tr>
-	
+	 --%>
+	<c:forEach items="${doorList }" var="door" varStatus="s">
+		<tr>
+			<td>${s.count }</td>
+			<td>${door.name }</td>
+			<td>${door.tel }</td>
+			<td>${door.addr }</td>
+			<td>
+			<a href="doorDelete?id=${door.id }">删除</a>
+			&nbsp;|&nbsp;
+			<a href="doorInfo?id=${door.id }">修改</a>
+			</td>
+		</tr>
+	</c:forEach>
 
-
-	
+	<c:if test="${not empty deleteException }">
+		<script>
+			alert("${deleteException}");
+		</script>
+	</c:if>
+		
 </table>
 </body><!-- body-end  -->
 </html>

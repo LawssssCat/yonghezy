@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edut.dao.OrderMapper">
+	<select id="findAll" resultType="com.edut.pojo.Order">
+		select id ,  
+		door_id doorId , 
+		order_no orderNo , 
+		order_type orderType , 
+		pnum , 
+		cashier , 
+		order_time  orderTime , 
+		pay_time payTime , 
+		pay_type payType , 
+		price 
+		from tb_order 
+	</select>
+	
+	<delete id="delete">
+		delete from tb_order where id = #{id}
+	</delete>
+	
+	<insert id="insert">
+		insert into tb_order values(
+			#{id} , 
+			#{doorId} , 
+			#{orderNo} ,
+			#{orderType} ,
+			#{pnum} ,
+			#{cashier} ,
+			#{orderTime} ,
+			#{payTime} ,
+			#{payType} ,
+			#{price} 
+		)
+	</insert>
+	
+	<update id="update">
+		update tb_order set 
+			doorId = #{doorId} , 
+			orderNo = #{orderNo} ,
+			orderType = #{orderType} ,
+			pnum  = #{pnum} ,
+			cashier = #{cashier} ,
+			orderTime = #{orderTime} ,
+			payTime = #{payTime} ,
+			payType = #{payType} ,
+			price = #{price} 
+		where id = #{id}
+	</update>
+	
+</mapper>

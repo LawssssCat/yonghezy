@@ -31,7 +31,10 @@
 			<td width="30%">所属门店</td>
 			<td>
 				<select id="doorId" name="doorId">
-					<option value="">永和大王(北三环西路店)</option>
+					<c:forEach items="${doorList }" var="door">
+						<option value="${door.id }">${door.name }</option>
+					</c:forEach>
+					<!-- <option value="">永和大王(北三环西路店)</option> -->
 				</select>
 			</td>
 		</tr>
@@ -39,51 +42,51 @@
 			<td>订单编号</td>
 			<td>
 				<input type="text" name="orderNo" 
-						value=""/>
+						value="${order.orderNo }"/>
 			</td>
 		</tr>
 		<tr>
 			<td>订单类型</td>
 			<td>
 				<input type="text" name="orderType" 
-						value=""/>
+						value="${order.orderType }"/>
 			</td>
 		</tr>
 		<tr>
 			<td>用餐人数</td>
 			<td>
 				<input type="text" name="pnum" 
-						value=""/>
+						value="${order.pnum }"/>
 			</td>
 		</tr>
 		<tr>
 			<td>收银员</td>
 			<td>
 				<input type="text" name="cashier" 
-						value=""/>
+						value="${order.cashier }"/>
 			</td>
 		</tr>
 		<tr>
 			<td>下单时间</td>
 			<td>
 				<input type="text" name="orderTime" 
-						value=''/>
-					
+						value='${order.orderTime }'/>
+					<!-- orderTime -->
 			</td>
 		</tr>
 		<tr>
 			<td>结账时间</td>
 			<td>
 				<input type="text" name="orderTime" 
-						value=''/>
-					
+						value='${order.payTime }' />
+					<!-- payTime -->
 			</td>
 		</tr>
 		<tr>
 			<td>支付方式</td>
 			<td>
 				<input type="text" name="payType"
-						value=""/>
+						value="${order.payType }"/>
 				
 			</td>
 		</tr>
@@ -91,7 +94,7 @@
 			<td>支付金额</td>
 			<td>
 				<input type="text" name="price"
-						value=""/>
+						value="${order.price }"/>
 			</td>
 		</tr>
 		<tr>
@@ -102,6 +105,12 @@
 	</table>
 </form>
 
+	<c:if test="not empty ${updateException}">
+		<script type="text/javascript">
+			alert("${updateException}");
+		</script>
+	</c:if>
+	
 </body><!-- body-end  -->
 </html>
 

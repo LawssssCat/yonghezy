@@ -36,6 +36,15 @@ public class Door {
 	@Override
 	public String toString() {
 		return "Door [id=" + id + ", name=" + name + ", tel=" + tel + ", addr=" + addr + "]";
+	}
+	public Door(String name, String tel, String addr) {
+		super();
+		this.name = name;
+		this.tel = tel;
+		this.addr = addr;
+	}
+	public Door() {
+		super();
 	} 
 	
 

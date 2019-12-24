@@ -29,7 +29,12 @@
 			<td width="30%">所属门店</td>
 			<td>
 				<select name="doorId">
+					<!-- 
 					<option value="">永和大王(北三环西路店)</option>
+					 -->
+					 <c:forEach items="${doorList }" var="door">
+					 	<option value="${door.id }" >${door.name }</option>
+					 </c:forEach>
 				</select>
 			</td>
 		</tr>
@@ -81,6 +86,14 @@
 		</tr>
 	</table>
 </form>
+
+	<c:if test="not empty ${updateException}">
+		<script type="text/javascript">
+			alert("${updateException}");
+		</script>
+	</c:if>
+	
+
 
 </body><!-- body-end  -->
 </html>
